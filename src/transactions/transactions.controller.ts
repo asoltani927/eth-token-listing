@@ -5,10 +5,12 @@ import { erc20Abi } from '@/utils/abi';
 @Controller('transactions')
 export class TransactionsController {
   @Get('events')
-  public getEvents(): any {
+  public async getEvents() {
     // Fetch event logs for every event on every ERC-20 contract.
-    return await publicClient.getContractEvents({
+    const logs = await publicClient.getContractEvents({
       abi: erc20Abi,
     });
+    console.log(logs);
+    return { message: 'success' };
   }
 }

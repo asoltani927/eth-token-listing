@@ -3,6 +3,5 @@ import { TransactionsController } from './transactions.controller';
 
 @Module({
   controllers: [TransactionsController],
-  exports: [TransactionsController],
 })
 export class TransactionsModule {}
