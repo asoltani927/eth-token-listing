@@ -10,3 +10,28 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
+// Define the `Post` table in the database
+model Transfer {
+  id        Int      @default(autoincrement()) @id
+  cuid String @unique @default(cuid())
+
+  tokenAddress String @map("token_address")
+  fromAddress String @map("from_address")
+  toAddress String @map("to_address")
+  amount String
+  transactionHash String @map("transaction_hash")
+
+  deleted   Boolean   @default(false)
+  createdAt DateTime  @default(now()) @map("created_at") @db.Timestamptz
+  updatedAt DateTime  @updatedAt @map("updated_at") @db.Timestamptz
+  deletedAt DateTime? @map("deleted_at") @db.Timestamptz
+
+  @@index(deleted)
+  @@index(tokenAddress)
+  @@index(fromAddress)
+  @@index(toAddress)
+  @@index(transactionHash)
+  @@map("transfers")
+}
+

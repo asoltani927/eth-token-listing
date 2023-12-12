@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { EventEmitterModule } from '@nestjs/event-emitter';
 import { ConfigModule } from '@nestjs/config';
 import { TransactionsModule } from '@modules/transactions/transactions.module';
+import { PrismaService } from './services/prisma.service';
 
 @Module({
   imports: [
@@ -17,6 +18,6 @@ import { TransactionsModule } from '@modules/transactions/transactions.module';
     EventEmitterModule.forRoot(), // TODO: can be removed
   ],
   controllers: [],
-  providers: [],
+  providers: [PrismaService],
 })
 export class AppModule {}

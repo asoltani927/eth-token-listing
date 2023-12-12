@@ -1,11 +1,12 @@
 import { Module, OnModuleInit } from '@nestjs/common';
 import { TransactionsController } from './transactions.controller';
 import { EtherService } from './services/ether.service';
+import { PrismaService } from '@/services/prisma.service';
 
 @Module({
   imports: [],
   controllers: [TransactionsController],
-  providers: [EtherService],
+  providers: [PrismaService, EtherService],
 })
 export class TransactionsModule implements OnModuleInit {
   constructor(private ethService: EtherService) {}

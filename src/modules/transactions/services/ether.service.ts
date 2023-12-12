@@ -43,6 +43,16 @@ export class EtherService {
         To: transaction.to,
         amount: ethers.formatEther(transaction.value),
       });
+      // TODO: we can implement a software architecture to use insert many
+      await this.prismaService.transfer.create({
+        data: {
+          transactionHash: transaction.hash,
+          tokenAddress: '0x0d500b1d8e8ef31e21c99d1db9a6444d3adf1270',
+          fromAddress: transaction.from,
+          toAddress: transaction.to,
+          amount: ethers.formatEther(transaction.value),
+        },
+      });
     });
   }
 }
