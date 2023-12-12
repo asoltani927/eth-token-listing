@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { publicClient } from '@/utils/client';
 import { erc20Abi } from '@/utils/abi';
-import { EtherService } from './listeners/ether.service';
+import { EtherService } from './services/ether.service';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 
 @Controller('transactions')
